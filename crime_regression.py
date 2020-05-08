@@ -74,12 +74,12 @@ print(districts)
 # # print(temp)
 # print(pd.concat(districts,values))
 
-data=pd.read_csv("train_file.csv")
+data=pd.read_csv('train_file.CSV')
 print(data)
 train_result=data.set_index('District').join(districts.set_index('District'))
 # result = pd.([districts, data], axis=1).reindex(districts.index)
 
-data=pd.read_csv("test_file.csv")
+data=pd.read_csv('test_file.CSV')
 print(data)
 test_result=data.set_index('District').join(districts.set_index('District'))
 # result = pd.([districts, data], axis=1).reindex(districts.index)
@@ -121,5 +121,20 @@ print(y_pred)
 print(y_pred_base)
 print(y_test)
 
-print(y_pred-y_test)
-print(y_pred_base -y_test)
+pred_error = y_pred - y_test
+base_error = y_pred_base - y_test
+print(y_pred - y_test)
+print(y_pred_base - y_test)
+
+plt.plot(y_train.keys(), y_pred, 'o', label='Prediction')
+plt.plot(y_train.keys(), y_test, 'o', label='Actual')
+plt.plot(y_train.keys(), y_pred_base, 'o', label='Prediction Base')
+plt.ylabel('number of crimes')
+plt.xlabel('District')
+plt.legend()
+plt.show()
+
+plt.hist(pred_error, bins=len(y_train.keys()), label='Predection Error')
+plt.xlabel('Error')
+#plt.hist(base_error, bins=len(y_train.keys()), label='Base Error')
+plt.show()
