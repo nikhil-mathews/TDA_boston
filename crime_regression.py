@@ -134,7 +134,17 @@ plt.xlabel('District')
 plt.legend()
 plt.show()
 
-plt.hist(pred_error, bins=len(y_train.keys()), label='Predection Error')
-plt.xlabel('Error')
-#plt.hist(base_error, bins=len(y_train.keys()), label='Base Error')
+x = np.arange(len(y_train.keys()))
+width = 0.35
+
+fig, ax = plt.subplots()
+rects1 = ax.bar(x - width/2, pred_error, width, label='Prediction Error')
+rects2 = ax.bar(x + width/2, base_error, width, label='Base Error')
+
+ax.set_ylabel('Error')
+#ax.set_xticks(x)
+#ax.set_xticklabels(y_train.keys())
+ax.legend()
+
+fig.tight_layout()
 plt.show()
