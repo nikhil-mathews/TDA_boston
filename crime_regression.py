@@ -121,10 +121,13 @@ print(y_pred)
 print(y_pred_base)
 print(y_test)
 
-pred_error = y_pred - y_test
-base_error = y_pred_base - y_test
+pred_error = abs(y_pred - y_test)
+base_error = abs(y_pred_base - y_test)
 print(y_pred - y_test)
 print(y_pred_base - y_test)
+
+print('Average Prediction Error: ', np.average(pred_error))
+print('Average Base Error: ', np.average(base_error))
 
 plt.plot(y_train.keys(), y_pred, 'o', label='Prediction')
 plt.plot(y_train.keys(), y_test, 'o', label='Actual')
