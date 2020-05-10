@@ -23,6 +23,7 @@ from sklearn.preprocessing import OneHotEncoder
 
 
 
+#Use this instead? data = list(set(df["DISTRICT"].dropna()))
 
 data=['C11'
 ,'B3'
